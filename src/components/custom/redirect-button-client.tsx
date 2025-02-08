@@ -15,7 +15,7 @@ const RedirectButtonClient = ({
 }) => {
   const router = useRouter();
   return (
-    <Button className={className} onClick={() => router.push(path)}>
+    <Button variant="default" className={className} onClick={() => router.push(path)}>
       {" "}
       {children}
     </Button>

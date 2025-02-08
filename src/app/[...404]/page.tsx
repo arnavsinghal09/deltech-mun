@@ -16,7 +16,7 @@ const fontOptions = Poppins({
 const Custom404Page = () => {
   return (
     <div
-      className={`min-h-screen flex flex-col justify-center items-center px-4 py-8 bg-background ${fontOptions.className}`}
+      className={`min-h-screen flex flex-col justify-center items-center px-4 py-8 bg-gradient-to-r from-blue-100 via-white to-blue-100 ${fontOptions.className}`}
     >
       <motion.div
         initial={{ opacity: 0, y: -20 }}
