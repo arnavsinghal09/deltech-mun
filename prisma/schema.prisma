@@ -1,0 +1,66 @@
+model Blog {
+  id        Int       @id @default(autoincrement())
+  title     String
+  content   String
+  published Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  authorId  String    // Store Clerk user ID here
+
+  // Relations
+  comments  Comment[]
+  categories BlogCategory[]
+  tags      BlogTag[]
+
+  @@index([authorId])
+}
+
+model BlogTag {
+  id    Int    @id @default(autoincrement())
+  name  String
+  blogs Blog[]
+}
+
+model BlogCategory {
+  id        Int      @id @default(autoincrement())
+  name      String
+  blogs     Blog[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  String   // Store Clerk user ID here
+  blogId    Int
+
+  // Relations
+  blog      Blog     @relation(fields: [blogId], references: [id], onDelete: Cascade)
+
+  @@index([authorId])
+  @@index([blogId])
+}
+
+model MunRegistration {
+  id                Int      @id @default(autoincrement())
+  clerkUserId       String   // Store Clerk user ID here
+  committeePref1    String
+  committeePref2    String
+  committeePref3    String
+  portfolioPref1    String
+  portfolioPref2    String
+  portfolioPref3    String
+  country           String
+  sessionYear       Int
+  experience        String?
+  skills            String?
+  registrationStatus String   @default("pending")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  // No need for user relation anymore
+
+  @@index([clerkUserId])
+}
