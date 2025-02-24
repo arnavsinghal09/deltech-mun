@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import CountdownTimer from "./CountdownTimer";
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 
 const ConferenceDetails = () => {
   return (

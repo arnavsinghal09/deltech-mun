@@ -4,6 +4,8 @@ import { currentUser } from "@clerk/nextjs/server";
 import { UserButton } from "@clerk/nextjs";
 
 import RedirectButtonClient from "./redirect-button-client";
+import React from "react";
+import { UserDropdown } from "./UserDropdown";
 
 export default async function Header() {
   const user = await currentUser();
@@ -11,7 +13,7 @@ export default async function Header() {
   console.log("Hehehe", user);
 
   return (
-    <div className="fixed w-full bg-gradient-to-r from-blue-100 via-white to-blue-100 backdrop-blur-sm z-50 border-b border-b-gray-100">
+    <div className="w-full bg-gradient-to-r from-blue-100 via-white to-blue-100 backdrop-blur-sm z-50 border-b border-b-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href={"/"} className="flex items-center space-x-2">
@@ -36,11 +38,12 @@ export default async function Header() {
             ))}
           </div>
           {user ? (
-            <UserButton
-              appearance={{
-                elements: { root: "custom-user-button" },
-              }}
-            />
+            <UserDropdown />
+            // <UserButton
+            //   appearance={{
+            //     elements: { root: "custom-user-button" },
+            //   }}
+            // />
           ) : (
             <RedirectButtonClient
               path="/auth/signin"

@@ -1,9 +1,11 @@
 "use client";
 
+// import React from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-
-import { FlipWords } from "@/components/ui/flip-words";
+import React from "react";
+import { FlipWords } from "../ui/flip-words";
 
 export default function HeroSection() {
   const words = ["Diplomats", "Change-Makers", "Visionaries", "Global Leaders"];

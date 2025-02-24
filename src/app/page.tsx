@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 
-import HeroSection from "@/components/custom/HeroSection";
-import ConferenceDetails from "@/components/custom/conference-details";
-import FeaturedBlogs from "@/components/custom/featured-blogs";
+import HeroSection from "../components/custom/HeroSection";
+import ConferenceDetails from "../components/custom/conference-details";
+import FeaturedBlogs from "../components/custom/featured-blogs";
 
 function App() {
   return (

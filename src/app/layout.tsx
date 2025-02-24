@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Provider from "./providers";
-import Header from "@/components/custom/Header";
-import Footer from "@/components/custom/Footer";
+import Header from "../components/custom/Header";
+import Footer from "../components/custom/Footer";
+import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`inter.className bg-gradient-to-r from-blue-200 via-blue-100 via-white via-blue-100 to-blue-200`}
+        className={`inter.className bg-gradient-to-r from-blue-100 via-white  to-blue-100`}
       >
         <Provider>
           <div className="flex flex-col min-h-screen">

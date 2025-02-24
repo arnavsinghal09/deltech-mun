@@ -1,9 +1,10 @@
+import React from "react";
 import { DeltechWhite } from "../../../public /logos/deltech-white";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12 overflow-y-auto">
+    <div className="bg-gray-900 text-white py-12 overflow-y-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
@@ -18,21 +19,21 @@ export default function Footer() {
           </div>
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400">
+            <div className="font-bold mb-4">Quick Links</div>
+            <div className="space-y-2 text-gray-400">
               {[
                 { name: "Home", path: "#" },
                 { name: "About Us", path: "#" },
                 { name: "Conferences", path: "#" },
                 { name: "Blog", path: "#" },
               ].map((link, index) => (
-                <li key={index}>
+                <div key={index}>
                   <Link href={link.path} className="hover:text-white">
                     {link.name}
                   </Link>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
           {/* Contact Information */}
           <div className="flex w-max space-x-10">
@@ -78,6 +79,6 @@ export default function Footer() {
           <div>&copy; 2024 MUN Society. All rights reserved.</div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 }

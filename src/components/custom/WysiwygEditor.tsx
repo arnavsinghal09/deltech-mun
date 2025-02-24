@@ -2,8 +2,9 @@ import { useState, useCallback, useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import { Bold, Italic, Heading2, List, ListOrdered, Quote } from "lucide-react";
+import React from "react";
 
 interface WysiwygEditorProps {
   content: string;
