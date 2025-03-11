@@ -76,7 +76,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <div>&copy; 2024 MUN Society. All rights reserved.</div>
+          <div>&copy; 2025 DelTech MUN & DebSoc. All rights reserved.</div>
         </div>
       </div>
     </div>

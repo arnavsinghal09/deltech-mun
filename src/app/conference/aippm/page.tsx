@@ -13,33 +13,26 @@ import { Button } from "../../../components/ui/button";
 import React from "react";
 
 const committeeData = {
-  name: "United Nations General Assembly",
-  subCommittee: "Disarmament and International Security Committee",
+  name: "All India Political Parties Meet",
   description:
-    "The Disarmament and International Security Committee (DISEC) is the First Committee of the United Nations General Assembly, tasked with addressing global security and disarmament issues. It plays a crucial role in discussions on arms control, non-proliferation, and conflict resolution.",
+    "AIPPM serves as a platform for representatives from various political parties in India to discuss and debate pressing national issues. It allows for an exchange of viewpoints on policies, governance, and legislative measures, influencing decision-making at the highest level.",
   agenda: {
     title:
-      "Discussing Ceasefire Mechanism and Disarmament Strategies for Sustainable Peace with a Special Focus on the Russia-Ukraine Conflict",
+      "Trajectory of Centre-State relations in the past decade with special emphasis on Fiscal Federalism.",
     description:
-      "This agenda aims to facilitate discussions on effective ceasefire mechanisms and disarmament strategies to ensure long-term peace in conflict zones, with a special emphasis on the ongoing Russia-Ukraine conflict. Delegates will explore diplomatic solutions, arms reduction policies, and the role of international organizations in enforcing peace agreements.",
+      "This agenda aims to analyze the evolving dynamics between the central and state governments over the past decade, with a particular focus on fiscal federalism. Discussions will explore revenue sharing, GST implementation, financial autonomy of states, and the role of institutions like the Finance Commission and GST Council in shaping fiscal policies.",
   },
   executiveBoard: [
     {
-      name: "Ishaan Jain",
-      position: "Chairperson",
-      bio: "Ishaan Jain",
+      name: "Akshat Mohan Awasthi",
+      position: "Co-Moderator",
+      bio: "Akshat Mohan Awasthi",
       image: "/api/placeholder/300/300",
     },
     {
-      name: "John Doe",
-      position: "Vice-Chairperson",
-      bio: "John Doe",
-      image: "/api/placeholder/300/300",
-    },
-    {
-      name: "John Doe",
-      position: "Rapporteur",
-      bio: "John",
+      name: "Aditya Sharma",
+      position: "Co-Moderator",
+      bio: "Aditya Sharma",
       image: "/api/placeholder/300/300",
     },
   ],
@@ -66,7 +59,7 @@ export default function CommitteePage() {
 
   return (
     <div className="min-h-screen py-12">
-      <div className="max-w-5xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto px-8">
         {/* Committee Header */}
         <motion.div
           className=" mb-16"
@@ -77,10 +70,7 @@ export default function CommitteePage() {
           <div className="text-5xl xl:text-7xl font-bold mb-4 text-gray-900">
             {committeeData.name}
           </div>
-          <div className="text-xl md:text-2xl font-bold mb-4 text-gray-900">
-            {committeeData.subCommittee}
-          </div>
-          <div className="text-md font-light text-gray-600 max-w-3xl">
+          <div className="text-md font-light text-gray-600 max-w-4xl">
             {committeeData.description}
           </div>
         </motion.div>
@@ -98,8 +88,8 @@ export default function CommitteePage() {
               className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://mun-website-images.s3.ap-south-1.amazonaws.com/russia-ukraine-1.jpg')",
-                filter: "brightness(40%)", // Adjust for transparency effect
+                  "url('https://mun-website-images.s3.ap-south-1.amazonaws.com/aippm-image.webp')",
+                filter: "brightness(50%)", // Adjust for transparency effect
               }}
             />
             <div className="relative p-8">
@@ -128,7 +118,7 @@ export default function CommitteePage() {
             Executive Board
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {committeeData.executiveBoard.map((member, index) => (
               <motion.div
                 key={index}

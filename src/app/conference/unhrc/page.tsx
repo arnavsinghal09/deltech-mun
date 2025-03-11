@@ -13,21 +13,20 @@ import { Button } from "../../../components/ui/button";
 import React from "react";
 
 const committeeData = {
-  name: "United Nations General Assembly",
-  subCommittee: "Disarmament and International Security Committee",
+  name: "United Nations Human Rights Council",
   description:
-    "The Disarmament and International Security Committee (DISEC) is the First Committee of the United Nations General Assembly, tasked with addressing global security and disarmament issues. It plays a crucial role in discussions on arms control, non-proliferation, and conflict resolution.",
+    "The United Nations Human Rights Council (UNHRC) is responsible for promoting and protecting human rights worldwide. It addresses violations, reviews global human rights conditions, and formulates policies to ensure the protection of fundamental freedoms in conflict zones and beyond.",
   agenda: {
     title:
-      "Discussing Ceasefire Mechanism and Disarmament Strategies for Sustainable Peace with a Special Focus on the Russia-Ukraine Conflict",
+      "Deliberation on Strengthening the Mechanisms of Coordination Relating to Humanitarian Assistance in Conflict-Ridden Regions",
     description:
-      "This agenda aims to facilitate discussions on effective ceasefire mechanisms and disarmament strategies to ensure long-term peace in conflict zones, with a special emphasis on the ongoing Russia-Ukraine conflict. Delegates will explore diplomatic solutions, arms reduction policies, and the role of international organizations in enforcing peace agreements.",
+      "This agenda focuses on improving international coordination in delivering humanitarian aid to regions affected by conflict. Delegates will examine existing frameworks, identify gaps in response mechanisms, and propose strategies for enhancing efficiency, accountability, and cooperation among international organizations, governments, and non-state actors.",
   },
   executiveBoard: [
     {
-      name: "Ishaan Jain",
+      name: "Dhruv Jain",
       position: "Chairperson",
-      bio: "Ishaan Jain",
+      bio: "Dhruv Jain",
       image: "/api/placeholder/300/300",
     },
     {
@@ -36,14 +35,9 @@ const committeeData = {
       bio: "John Doe",
       image: "/api/placeholder/300/300",
     },
-    {
-      name: "John Doe",
-      position: "Rapporteur",
-      bio: "John",
-      image: "/api/placeholder/300/300",
-    },
   ],
 };
+
 
 // Simple fade-in animation
 const fadeIn = {
@@ -77,9 +71,6 @@ export default function CommitteePage() {
           <div className="text-5xl xl:text-7xl font-bold mb-4 text-gray-900">
             {committeeData.name}
           </div>
-          <div className="text-xl md:text-2xl font-bold mb-4 text-gray-900">
-            {committeeData.subCommittee}
-          </div>
           <div className="text-md font-light text-gray-600 max-w-3xl">
             {committeeData.description}
           </div>
@@ -98,8 +89,8 @@ export default function CommitteePage() {
               className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://mun-website-images.s3.ap-south-1.amazonaws.com/russia-ukraine-1.jpg')",
-                filter: "brightness(40%)", // Adjust for transparency effect
+                  "url('https://mun-website-images.s3.ap-south-1.amazonaws.com/unhrc-image.jpg')",
+                filter: "brightness(40%)",
               }}
             />
             <div className="relative p-8">
@@ -128,7 +119,7 @@ export default function CommitteePage() {
             Executive Board
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {committeeData.executiveBoard.map((member, index) => (
               <motion.div
                 key={index}
