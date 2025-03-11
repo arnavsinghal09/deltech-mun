@@ -1,21 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import CountdownTimer from "@/components/custom/CountdownTimer";
+import React from "react";
+import { Button } from "../../components/ui/button";
+import CountdownTimer from "../../components/custom/CountdownTimer";
 import { motion } from "framer-motion";
-import CommitteeCard from "@/components/custom/committee-card";
+import CommitteeCard from "../../components/custom/committee-card";
 
 export default function ConferencePage() {
   const committees = [
     {
       name: "UNGA",
+      redirect: "/conference/unga-disec",
       imagePath: "/images/unga.png",
       details:
         "The United Nations General Assembly (UNGA) is the main deliberative, policymaking, and representative body of the UN.",
     },
     {
       name: "UNHRC",
+      redirect: "/conference/unhrc",
       imagePath: "/images/unhrc.png",
       details:
         "The United Nations Human Rights Council (UNHRC) addresses human rights violations and promotes the protection of fundamental freedoms worldwide.",
@@ -23,6 +26,7 @@ export default function ConferencePage() {
 
     {
       name: "UNCSW",
+      redirect: "/conference/uncsw",
       imagePath: "/images/uncsw.png",
       details:
         "The United Nations Commission on the Status of Women (UNCSW) promotes gender equality and the empowerment of women globally.",
@@ -30,18 +34,21 @@ export default function ConferencePage() {
 
     {
       name: "AIPPM",
+      redirect: "/conference/aippm",
       imagePath: "/images/aippm.png",
       details:
         "The All India Political Parties Meet (AIPPM) is a platform for political representatives to discuss national issues.",
     },
     {
       name: "Lok Sabha",
+      redirect: "/conference/lok-sabha",
       imagePath: "/images/lok-sabha.png",
       details:
         "The Lok Sabha is the lower house of the Parliament of India, responsible for making laws and overseeing the executive.",
     },
     {
       name: "International Press",
+      redirect: "/conference/ip",
       imagePath: "/images/press.png",
       details:
         "This committee focuses on the role of the press in promoting freedom of speech, democracy, and ethical journalism worldwide.",
@@ -81,7 +88,9 @@ export default function ConferencePage() {
         >
           {" "}
           {committees.map((committee, index) => (
-            <CommitteeCard key={index} committee={committee} />
+            <Link href={committee.redirect} key={index}>
+              <CommitteeCard key={index} committee={committee} />
+            </Link>
           ))}
         </motion.div>
       </div>
