@@ -24,15 +24,15 @@ const committeeData = {
   },
   executiveBoard: [
     {
-      name: "Kashish Gumber",
+      name: "Ms. Kashish Gumber",
       position: "Chairperson",
-      bio: "Kashish Gumber",
+      bio: "Ms. Kashish Gumber",
       image: "/api/placeholder/300/300",
     },
     {
-      name: "John Doe",
+      name: "Mr. Bhavya Bhardwaj",
       position: "Vice-Chairperson",
-      bio: "John Doe",
+      bio: "Mr. Bhavya Bhardwaj",
       image: "/api/placeholder/300/300",
     },
   ],

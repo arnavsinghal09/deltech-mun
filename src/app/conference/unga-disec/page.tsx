@@ -25,21 +25,15 @@ const committeeData = {
   },
   executiveBoard: [
     {
-      name: "Ishaan Jain",
+      name: "Mr. Ishaan Jain",
       position: "Chairperson",
       bio: "Ishaan Jain",
       image: "/api/placeholder/300/300",
     },
     {
-      name: "John Doe",
+      name: "Mr. Ranjeet Hudda",
       position: "Vice-Chairperson",
-      bio: "John Doe",
-      image: "/api/placeholder/300/300",
-    },
-    {
-      name: "John Doe",
-      position: "Rapporteur",
-      bio: "John",
+      bio: "Mr. Ranjeet Hudda",
       image: "/api/placeholder/300/300",
     },
   ],

@@ -24,15 +24,21 @@ const committeeData = {
   },
   executiveBoard: [
     {
-      name: "Dhruv Jain",
-      position: "Chairperson",
-      bio: "Dhruv Jain",
+      name: "Mr. Dhruv Jain",
+      position: "President",
+      bio: "Mr. Dhruv Jain",
       image: "/api/placeholder/300/300",
     },
     {
-      name: "John Doe",
-      position: "Vice-Chairperson",
-      bio: "John Doe",
+      name: "Mr. Pranjal Jain",
+      position: "Vice-President",
+      bio: "Mr. Pranjal Jain",
+      image: "/api/placeholder/300/300",
+    },
+    {
+      name: "Mr. Vinayak Mishra",
+      position: "Research Associate",
+      bio: "Mr. Vinayak Mishra",
       image: "/api/placeholder/300/300",
     },
   ],
@@ -119,7 +125,7 @@ export default function CommitteePage() {
             Executive Board
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {committeeData.executiveBoard.map((member, index) => (
               <motion.div
                 key={index}

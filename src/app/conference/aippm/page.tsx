@@ -24,15 +24,15 @@ const committeeData = {
   },
   executiveBoard: [
     {
-      name: "Akshat Mohan Awasthi",
-      position: "Co-Moderator",
+      name: "Mr. Akshat Mohan Awasthy",
+      position: "Chairperson",
       bio: "Akshat Mohan Awasthi",
       image: "/api/placeholder/300/300",
     },
     {
-      name: "Aditya Sharma",
-      position: "Co-Moderator",
-      bio: "Aditya Sharma",
+      name: "Mr. Saksham Tuteja",
+      position: "Vice Chairperson",
+      bio: "Mr. Saksham Tuteja",
       image: "/api/placeholder/300/300",
     },
   ],

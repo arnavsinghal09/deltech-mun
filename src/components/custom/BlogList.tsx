@@ -19,7 +19,7 @@ export default function BlogList() {
 
     // Generate unique IDs based on timestamp and index
     const newPosts: BlogPost[] = Array.from({ length: 10 }, (_, i) => ({
-      id: Date.now() + (page - 1) * 10 + i, // Create truly unique IDs
+      id:  (page - 1) * 10 + i+1, 
       title: `Blog Post ${(page - 1) * 10 + i + 1}`,
       author: {
         name: "John Doe",

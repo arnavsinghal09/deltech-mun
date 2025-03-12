@@ -23,15 +23,9 @@ const committeeData = {
   },
   executiveBoard: [
     {
-      name: "John Doe",
+      name: "Ms. Shreya Chatterjee",
       position: "Editor-in-Chief",
-      bio: "John Doe",
-      image: "/api/placeholder/300/300",
-    },
-    {
-      name: "John Doe",
-      position: "Deputy Editor-in Chief",
-      bio: "John Doe",
+      bio: "Ms. Shreya Chatterjee",
       image: "/api/placeholder/300/300",
     },
   ],
@@ -117,7 +111,7 @@ export default function CommitteePage() {
             Executive Board
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="flex flex-wrap justify-center gap-8 max-w-[1200px] mx-auto">
             {committeeData.executiveBoard.map((member, index) => (
               <motion.div
                 key={index}
@@ -125,7 +119,7 @@ export default function CommitteePage() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: index * 0.2, duration: 0.5 }}
               >
-                <Card className="bg-white border-gray-200 shadow-md h-full">
+                <Card className="bg-white border-gray-200 shadow-md w-80 h-full">
                   <div className="relative h-64 w-full overflow-hidden rounded-t-lg">
                     <Image
                       src={member.image}

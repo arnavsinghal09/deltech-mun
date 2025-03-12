@@ -25,14 +25,14 @@ const committeeData = {
   executiveBoard: [
     {
       name: "Aniket Basu",
-      position: "Co-Moderator",
+      position: "Speaker",
       bio: "Aniket Basu",
       image: "/api/placeholder/300/300",
     },
     {
-      name: "John Doe",
-      position: "Co-Moderator",
-      bio: "John Doe",
+      name: "Mr. Kushal Dubey",
+      position: "Deputy Speaker",
+      bio: "Mr. Kushal Dubey",
       image: "/api/placeholder/300/300",
     },
   ],
