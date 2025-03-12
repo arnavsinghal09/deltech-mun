@@ -18,23 +18,10 @@ model Blog {
 
   // Relations
   comments  Comment[]
-  categories BlogCategory[]
-  tags      BlogTag[]
 
   @@index([authorId])
 }
 
-model BlogTag {
-  id    Int    @id @default(autoincrement())
-  name  String
-  blogs Blog[]
-}
-
-model BlogCategory {
-  id        Int      @id @default(autoincrement())
-  name      String
-  blogs     Blog[]
-}
 
 model Comment {
   id        Int      @id @default(autoincrement())

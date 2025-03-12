@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { DeltechBlack } from "../../../public /logos/deltech-black";
 import { currentUser } from "@clerk/nextjs/server";
-import { UserButton } from "@clerk/nextjs";
+import { Menu } from "lucide-react";
+import { Button } from "../ui/button";
+import { motion, AnimatePresence } from "framer-motion";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 
 import RedirectButtonClient from "./redirect-button-client";
 import React from "react";
 import { UserDropdown } from "./UserDropdown";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 export default async function Header() {
   const user = await currentUser();
@@ -37,23 +41,62 @@ export default async function Header() {
               </Link>
             ))}
           </div>
+
           {user ? (
-            <UserDropdown />
-            // <UserButton
-            //   appearance={{
-            //     elements: { root: "custom-user-button" },
-            //   }}
-            // />
+            <div className="flex  space-x-4">
+              <DialogBar className="md:hidden" />
+              <UserDropdown />
+            </div>
           ) : (
-            <RedirectButtonClient
-              path="/auth/signin"
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-            >
-              Register Now
-            </RedirectButtonClient>
+            <>
+              <DialogBar className="md:hidden" />
+              <RedirectButtonClient
+                path="/auth/signin"
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+              >
+                Register Now
+              </RedirectButtonClient>
+            </>
           )}
         </div>
       </div>
     </div>
+  );
+}
+
+export function DialogBar({ className }: { className?: string }) {
+  const menuItems = [
+    { label: "Home", href: "/" },
+    { label: "Conference", href: "/conference" },
+    { label: "Blog", href: "/blog" },
+    { label: "Members", href: "/members" },
+    { label: "About", href: "/" },
+  ];
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button className={className} variant="outline" size="icon">
+          <Menu className="h-4 w-4" />
+        </Button>
+      </DialogTrigger>
+      <DialogTitle>{``}</DialogTitle>
+      <DialogContent className="max-w-[300px] rounded-xl flex flex-col space-y-4 backdrop-blur-xl bg-background/80 shadow-lg p-6 border">
+        <div className="flex flex-col items-center space-y-4">
+          {menuItems.map((item) => (
+            <div key={item.label}>
+              {item.href ? (
+                <Link
+                  href={item.href}
+                  className="text-lg font-medium text-primary hover:text-primary-focus transition-colors duration-200"
+                >
+                  {item.label}
+                </Link>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }

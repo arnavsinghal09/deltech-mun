@@ -2,90 +2,157 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Tabs,TabsContent,TabsList,TabsTrigger } from "@/components/ui/tabs";
-import { FocusCards } from "@/components/ui/focus-cards";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../../components/ui/tabs";
+import { FocusCards } from "../../components/ui/focus-cards";
+import { link } from "fs";
 
-const administrative = [{
-      name: "Jane Doe",
-      role: "President",
-      description: "Jane is the president of the club and has a passion for international relations and diplomacy.",
-      src: "/members/jane-doe.jpg",
-    },
-    {
-      name: "John Smith",
-      role: "Vice President",
-      description: "John is the vice president of the club and has a passion for international relations and diplomacy.",
-      src: "/members/john-smith.jpg",
-    },
-    {
-      name: "Emily Brown",
-      role: "Secretary",
-      description: "Emily is the secretary of the club and has a passion for international relations and diplomacy.",
-      src: "/members/emily-brown.jpg",
-    }]
+const administrative = [
+  {
+    name: "Dhruv Rustagi",
+    role: "President",
+    src: "/members/jane-doe.jpg",
+  },
+  {
+    name: "Arin Singhal",
+    role: "Vice President",
+    src: "/members/jane-doe.jpg",
+  },
+  {
+    name: "Sanskar Srivastava",
+    role: "Chief Advisor",
+    src: "/members/jane-doe.jpg",
+  },
+];
 
+const senior = [
+  {
+    name: "Michael Johnson",
+    role: "Senior Delegate",
+    description:
+      "Michael is a senior delegate with a passion for international relations and diplomacy.",
+    src: "/members/michael-johnson.jpg",
+  },
+  {
+    name: "Sarah Williams",
+    role: "Senior Delegate",
+    description:
+      "Sarah is a senior delegate with a passion for international relations and diplomacy.",
+    src: "/members/sarah-williams.jpg",
+  },
+  {
+    name: "David Lee",
+    role: "Senior Delegate",
+    description:
+      "David is a senior delegate with a passion for international relations and diplomacy.",
+    src: "/members/david-lee.jpg",
+  },
+  {
+    name: "Lisa Chen",
+    role: "Senior Delegate",
+    description:
+      "Lisa is a senior delegate with a passion for international relations and diplomacy.",
+    src: "/members/lisa-chen.jpg",
+  },
+];
 
-  const senior = [{
-      name: "Michael Johnson",
-      role: "Senior Delegate",
-      description: "Michael is a senior delegate with a passion for international relations and diplomacy.",
-      src: "/members/michael-johnson.jpg",
-    },
-    {
-      name: "Sarah Williams",
-      role: "Senior Delegate",
-      description: "Sarah is a senior delegate with a passion for international relations and diplomacy.",
-      src: "/members/sarah-williams.jpg",
-    },
-    {
-      name: "David Lee",
-      role: "Senior Delegate",
-      description: "David is a senior delegate with a passion for international relations and diplomacy.",
-      src: "/members/david-lee.jpg",
-    },
-    {
-      name: "Lisa Chen",
-      role: "Senior Delegate",
-      description: "Lisa is a senior delegate with a passion for international relations and diplomacy.",
-      src: "/members/lisa-chen.jpg",
-    },
-  ]
-
-  const junior = [
-    {
-      name: "Alex Turner",
-      role: "Junior Delegate",
-      description: "Alex is a junior delegate with a passion for international relations and diplomacy.",
-      src: "/members/alex-turner.jpg",
-    },
-    {
-      name: "Olivia Martinez",
-      role: "Junior Delegate",
-      description: "Olivia is a junior delegate with a passion for international relations and diplomacy.",
-      src: "/members/olivia-martinez.jpg",
-    },
-    {
-
-      name: "Ryan Patel",
-      role: "Junior Delegate",
-      description: "Ryan is a junior delegate with a passion for international relations and diplomacy.",
-      src: "/members/ryan-patel.jpg",
-    },
-    {
-      name: "Sophi  e Kim",
-      role: "Junior Delegate",
-      description: "Sophie is a junior delegate with a passion for international relations and diplomacy.",
-      src: "/members/sophie-kim.jpg",
-    },
-    {
-
-      name: "Daniel Garcia",
-      role: "Junior Delegate",
-      description: "Daniel is a junior delegate with a passion for international relations and diplomacy.",
-      src: "/members/daniel-garcia.jpg",
-    },
-  ]
-
+const junior = [
+  {
+    name: "Anjan Anand",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Anjan+Anand.png",
+  },
+  {
+    name: "Anukesh Singh",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Anukesh.jpg",
+  },
+  {
+    name: "Arnav Singhal",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Arnav.jpg",
+    linkedin: "https://www.linkedin.com/in/arnavsinghal09",
+  },
+  {
+    name: "Himanshu Sharma",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Himanshu.webp",
+    linkedin: "https://www.linkedin.com/in/himanshu-sharma-2183a429b/",
+  },
+  {
+    name: "Raghav Garg",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Raghav.png",
+    linkedin: "https://www.linkedin.com/in/raaghavgarg/",
+  },
+  {
+    name: "Tanmay Solanki",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Tanmay.JPG",
+    linkedin: "https://www.linkedin.com/in/tanmay-solanki-b6b385220/",
+  },
+  {
+    name: "Khush Chawla",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Khush.jpg",
+    linkedin: "https://www.linkedin.com/in/khush-chawla-4b6321299/",
+  },
+  {
+    name: "Rishita Sinha",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Rishita.jpg",
+    linkedin: "https://www.linkedin.com/in/rishita-sinha-2957262a4/",
+  },
+  {
+    name: "Nikunj Sharma",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Nikunj+Sharma.jpeg",
+    linkedin: "https://www.linkedin.com/in/nikunj-sharma-183862289",
+  },
+  {
+    name: "Satyam Kumar",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Satyam.png",
+    linkedin: "https://www.linkedin.com/in/satyam-kumar-711b54150/",
+  },
+  {
+    name: "Pushpa Shikhar Singh",
+    role: "Junior Council",
+    src: "/members/daniel-garcia.jpg",
+    linkedin: "https://www.linkedin.com/in/pushpa-shikhar-singh-709894212/",
+  },
+  {
+    name: "Soumya Shekhar",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Soumya.jpg",
+    linkedin: "https://www.linkedin.com/in/soumya-shekhar-973039287",
+  },
+  {
+    name: "Keshav Bajaj",
+    role: "Junior Council",
+    src: "/members/daniel-garcia.jpg",
+  },
+  {
+    name: "Parth Malik",
+    role: "Junior Council",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Parth.HEIC",
+    linkedin: "https://www.linkedin.com/in/parth-malik-676966286/",
+  },
+  {
+    name: "Tisha Gupta",
+    role: "Junior Council",
+    src: "/members/daniel-garcia.jpg",
+  },
+  {
+    name: "Atiyab",
+    role: "Junior Council",
+    src: "/members/daniel-garcia.jpg",
+  },
+];
 
 export default function MembersPage() {
   const [activeTab, setActiveTab] = useState("administrative");
@@ -102,12 +169,19 @@ export default function MembersPage() {
           className="w-full"
           onValueChange={setActiveTab}
         >
-          <TabsList className="grid w-full grid-cols-3 bg-gray-100">
-            <TabsTrigger value="administrative">
+          <TabsList className="w-full bg-gray-100 flex flex-wrap justify-center gap-2 sm:grid sm:grid-cols-3">
+            <TabsTrigger
+              value="administrative"
+              className="flex-1 min-w-[120px]"
+            >
               Administrative Council
             </TabsTrigger>
-            <TabsTrigger value="senior">Senior Council</TabsTrigger>
-            <TabsTrigger value="junior">Junior Council</TabsTrigger>
+            <TabsTrigger value="senior" className="flex-1 min-w-[120px]">
+              Senior Council
+            </TabsTrigger>
+            <TabsTrigger value="junior" className="flex-1 min-w-[120px]">
+              Junior Council
+            </TabsTrigger>
           </TabsList>
 
           <AnimatePresence mode="wait" initial={false}>
@@ -119,7 +193,6 @@ export default function MembersPage() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  
                 >
                   <FocusCards cards={administrative} />
                 </motion.div>
@@ -134,7 +207,6 @@ export default function MembersPage() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-         
                 >
                   <FocusCards cards={senior} />
                 </motion.div>
