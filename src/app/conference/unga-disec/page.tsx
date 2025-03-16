@@ -124,7 +124,7 @@ export default function CommitteePage() {
             Executive Board
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {committeeData.executiveBoard.map((member, index) => (
               <motion.div
                 key={index}
@@ -133,7 +133,7 @@ export default function CommitteePage() {
                 transition={{ delay: index * 0.2, duration: 0.5 }}
               >
                 <Card className="bg-white border-gray-200 shadow-md h-full">
-                  <div className="relative h-64 w-full overflow-hidden rounded-t-lg">
+                  <div className="relative h-96 w-full overflow-hidden rounded-t-lg">
                     <Image
                       src={member.image}
                       alt={member.name}

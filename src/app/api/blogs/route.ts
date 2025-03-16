@@ -45,9 +45,8 @@ export async function GET(request: NextRequest) {
         orderBy: {
           createdAt: "desc",
         },
-        select: select, 
+        select: select,
       });
-     
     } else {
       blogs = await prisma.blog.findMany({
         where: query,
@@ -59,7 +58,7 @@ export async function GET(request: NextRequest) {
     }
 
     const processedBlogs = await Promise.all(
-      blogs.map(async (blog) => {
+      blogs.map(async (blog: any) => {
         let parsedContent = blog.content;
         try {
           if (typeof blog.content === "string") {
