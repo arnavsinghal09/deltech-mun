@@ -34,6 +34,10 @@ import {
   ChevronDown,
   Save,
 } from "lucide-react";
+import { FileUpload } from "../../../../components/ui/file-upload";
+import { toast, Toaster } from "sonner";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/clerk-react";
 
 const LOCAL_STORAGE_KEYS = {
   TITLE: "medium-editor-title",
@@ -42,15 +46,18 @@ const LOCAL_STORAGE_KEYS = {
 };
 
 const MediumEditor = () => {
+  const { user } = useUser();
   const [title, setTitle] = useState("");
   const [linkDialogOpen, setLinkDialogOpen] = useState(false);
   const [linkUrl, setLinkUrl] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
   const [lastSaved, setLastSaved] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
+  const router = useRouter();
   // Initialize editor with possibly restored content
   const editor = useEditor({
     extensions: [
@@ -90,18 +97,15 @@ const MediumEditor = () => {
     const savedContent = localStorage.getItem(LOCAL_STORAGE_KEYS.CONTENT);
     const savedTimestamp = localStorage.getItem(LOCAL_STORAGE_KEYS.LAST_SAVED);
 
-    // Restore title if available
     if (savedTitle && titleRef.current) {
       titleRef.current.textContent = savedTitle;
       setTitle(savedTitle);
     }
 
-    // Restore content if available and editor is ready
     if (savedContent && editor) {
       editor.commands.setContent(savedContent);
     }
 
-    // Display last saved timestamp
     if (savedTimestamp) {
       setLastSaved(savedTimestamp);
     }
@@ -136,6 +140,76 @@ const MediumEditor = () => {
   // Handle manual save
   const handleManualSave = () => {
     saveToLocalStorage();
+  };
+
+  const handleManualSubmit = async () => {
+    if (!editor) {
+      console.error("Editor not initialized");
+      return;
+    }
+
+    try {
+      // Set loading state
+      setIsLoading(true);
+
+      // Get content from editor
+      const content = editor.getJSON();
+
+      // Validate title (if required)
+      if (!title.trim()) {
+        toast.error("Please enter a title");
+        titleRef.current?.focus();
+        return;
+      }
+
+      console.log("Submitting content:", {
+        title,
+        content,
+      });
+      // API call to save data
+      const response = await fetch("/api/blog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user?.id,
+          title,
+          content,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to save: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      // Update last saved timestamp
+      setLastSaved(new Date().toLocaleTimeString());
+
+      // Show success message
+      toast.success("Content saved successfully");
+
+      editor.commands.clearContent();
+      setTitle("");
+      setLastSaved(null);
+
+      localStorage.removeItem(LOCAL_STORAGE_KEYS.TITLE);
+      localStorage.removeItem(LOCAL_STORAGE_KEYS.CONTENT);
+      localStorage.removeItem(LOCAL_STORAGE_KEYS.LAST_SAVED);
+
+      router.push(`/dashboard`);
+
+      // Optional: Return the saved data or redirect
+      return data;
+    } catch (error) {
+      console.error("Error saving content:", error);
+      toast.error("Failed to save content");
+    } finally {
+      // Reset loading state
+      setIsLoading(false);
+    }
   };
 
   // Clear saved content
@@ -184,36 +258,36 @@ const MediumEditor = () => {
     setLinkDialogOpen(false);
   }, [editor, linkUrl]);
 
-  const addImage = useCallback(
-    async (event: React.ChangeEvent<HTMLInputElement>) => {
-      const file = event.target.files?.[0];
+  interface UploadResponse {
+    imageUrl: string;
+  }
 
-      console.log("addImage called with:", file);
-
+  const uploadAndAddImage = useCallback(
+    async (file: File | null) => {
       if (!file) return;
 
       try {
-        console.log("File selected:", file.name, file.type, file.size);
+        console.log("Uploading file:", file.name, file.type, file.size);
 
         const formData = new FormData();
         formData.append("image", file);
 
-        console.log("FormData created with image:", file.name);
-
+        setIsLoading(true);
         const response = await fetch("/api/upload-s3", {
           method: "POST",
           body: formData,
         });
-
+        setIsLoading(false);
         console.log("API response status:", response.status);
 
         if (response.ok) {
-          const data = await response.json();
+          const data: UploadResponse = await response.json();
           console.log("API success:", data);
 
           if (editor && data?.imageUrl) {
             editor.chain().focus().setImage({ src: data.imageUrl }).run();
             setImageDialogOpen(false);
+            setSelectedFile(null); // Reset the selected file
           } else {
             console.error("Invalid API response: Missing imageUrl");
           }
@@ -228,6 +302,7 @@ const MediumEditor = () => {
           const localUrl = URL.createObjectURL(file);
           editor.chain().focus().setImage({ src: localUrl }).run();
           setImageDialogOpen(false);
+          setSelectedFile(null); // Reset the selected file
         }
       } finally {
         // Always reset the file input
@@ -239,18 +314,11 @@ const MediumEditor = () => {
     [editor]
   );
 
-  const addImageFromUrl = useCallback(() => {
-    if (!imageUrl) return;
+  interface TitleChangeEvent extends React.FormEvent<HTMLDivElement> {
+    target: HTMLDivElement;
+  }
 
-    if (editor) {
-      editor.chain().focus().setImage({ src: imageUrl }).run();
-    }
-
-    setImageUrl("");
-    setImageDialogOpen(false);
-  }, [editor, imageUrl]);
-
-  const handleTitleChange = (e) => {
+  const handleTitleChange = (e: TitleChangeEvent) => {
     const newTitle = e.target.textContent || "";
     setTitle(newTitle);
     // Save title to localStorage immediately on change
@@ -262,292 +330,299 @@ const MediumEditor = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto p-4 font-serif">
-      <div className="prose prose-lg max-w-none">
-        {/* Title */}
-        <div
-          ref={titleRef}
-          className="border-none outline-none text-4xl font-bold mb-6 pb-2 empty:before:content-[attr(data-placeholder)] empty:before:text-gray-400 empty:before:pointer-events-none"
-          contentEditable
-          onInput={handleTitleChange}
-          data-placeholder="Title"
-          suppressContentEditableWarning={true}
-        />
+    <>
+      <Toaster />
+      <div className="max-w-3xl mx-auto p-4 font-serif">
+        <div className="prose prose-lg max-w-none">
+          {/* Title */}
+          <div
+            ref={titleRef}
+            className="border-none outline-none text-4xl font-bold mb-6 pb-2 empty:before:content-[attr(data-placeholder)] empty:before:text-gray-400 empty:before:pointer-events-none"
+            contentEditable
+            onInput={handleTitleChange}
+            data-placeholder="Title"
+            suppressContentEditableWarning={true}
+          />
 
-        {/* Auto-save indicator */}
-        {lastSaved && (
-          <div className="text-sm text-gray-500 mb-4 flex items-center">
-            <span>Last saved: {lastSaved}</span>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="ml-2"
-              onClick={handleManualSave}
-              title="Save now"
-            >
-              <Save size={14} />
-            </Button>
-          </div>
-        )}
-
-        {/* Toolbar */}
-        <div className="sticky top-0 z-10 bg-white py-2 mb-4 flex items-center gap-3 border-b border-gray-100">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => editor.chain().focus().toggleBold().run()}
-            className={`rounded-full p-2 h-8 w-8 ${
-              editor.isActive("bold") ? "bg-gray-100" : ""
-            }`}
-          >
-            <Bold size={16} />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => editor.chain().focus().toggleItalic().run()}
-            className={`rounded-full p-2 h-8 w-8 ${
-              editor.isActive("italic") ? "bg-gray-100" : ""
-            }`}
-          >
-            <Italic size={16} />
-          </Button>
-
-          <Popover>
-            <PopoverTrigger asChild>
+          {/* Auto-save indicator */}
+          {lastSaved && (
+            <div className="text-sm text-gray-500 mb-4 flex items-center">
+              <span>Last saved: {lastSaved}</span>
               <Button
                 variant="ghost"
                 size="sm"
-                className="rounded-full px-2 h-8 flex items-center gap-1"
+                className="ml-2"
+                onClick={handleManualSave}
+                title="Save now"
               >
-                <Headers size={16} />
-                <ChevronDown size={12} />
+                <Save size={14} />
               </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-32 p-0">
-              <div className="flex flex-col">
-                {[1, 2, 3].map((level) => (
-                  <Button
-                    key={level}
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => {
-                      console.log(
-                        "Before toggle - isActive:",
-                        editor.isActive("heading", { level })
-                      );
-                      editor
-                        .chain()
-                        .focus()
-                        .toggleHeading({ level: level as 1 | 2 | 3 })
-                        .run();
-                      // Force a re-render or check the editor state after toggling
-                      console.log(
-                        "After toggle - isActive:",
-                        editor.isActive("heading", { level })
-                      );
-                    }}
-                    className={`justify-start rounded-none ${
-                      editor.isActive("heading", { level }) ? "bg-gray-100" : ""
-                    }`}
-                  >
-                    H{level}
-                  </Button>
-                ))}
-              </div>
-            </PopoverContent>
-          </Popover>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => editor.chain().focus().toggleCode().run()}
-            className={`rounded-full p-2 h-8 w-8 ${
-              editor.isActive("code") ? "bg-gray-100" : ""
-            }`}
-          >
-            <Code size={16} />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setLinkDialogOpen(true)}
-            className={`rounded-full p-2 h-8 w-8 ${
-              editor.isActive("link") ? "bg-gray-100" : ""
-            }`}
-          >
-            <LinkIcon size={16} />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => editor.chain().focus().setHorizontalRule().run()}
-            className="rounded-full p-2 h-8 w-8"
-          >
-            <MinusSquare size={16} />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setImageDialogOpen(true)}
-            className="rounded-full p-2 h-8 w-8 ml-auto"
-          >
-            <ImageIcon size={16} />
-          </Button>
-        </div>
-
-        {/* Editor Content */}
-        <div className="min-h-[300px] font-serif text-lg">
-          <EditorContent editor={editor} />
-        </div>
-      </div>
-
-      {/* Link Dialog */}
-      <Dialog open={linkDialogOpen} onOpenChange={setLinkDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Add Link</DialogTitle>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <Input
-              type="url"
-              placeholder="https://example.com"
-              value={linkUrl}
-              onChange={(e) => setLinkUrl(e.target.value)}
-              autoFocus
-            />
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setLinkDialogOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={setLink}>Add Link</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Image Dialog */}
-      <Dialog open={imageDialogOpen} onOpenChange={setImageDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Add Image</DialogTitle>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <Input
-              type="url"
-              placeholder="Image URL"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              className="col-span-2"
-            />
-            <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-500">
-                Or upload from your device
-              </div>
-              <Button
-                variant="outline"
-                onClick={() => fileInputRef.current?.click()}
-              >
-                Choose File
-              </Button>
-              <Input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={addImage}
-              />
             </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setImageDialogOpen(false)}>
-              Cancel
+          )}
+
+          {/* Toolbar */}
+          <div className="sticky top-0 z-10 bg-white py-2 mb-4 flex items-center gap-3 border-b rounded-md border-gray-100">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => editor.chain().focus().toggleBold().run()}
+              className={`rounded-full p-2 h-8 w-8 ${
+                editor.isActive("bold") ? "bg-gray-100" : ""
+              }`}
+            >
+              <Bold size={16} />
             </Button>
 
             <Button
-              onClick={() => {
-                addImageFromUrl();
-              }}
+              variant="ghost"
+              size="sm"
+              onClick={() => editor.chain().focus().toggleItalic().run()}
+              className={`rounded-full p-2 h-8 w-8 ${
+                editor.isActive("italic") ? "bg-gray-100" : ""
+              }`}
             >
-              Add Image
+              <Italic size={16} />
             </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
 
-      {/* Publish Controls */}
-      <div className="flex justify-between gap-2 mt-8">
-        <Button
-          variant="outline"
-          className="rounded-full px-6 text-red-600 hover:text-red-700 hover:bg-red-50"
-          onClick={clearSavedContent}
-        >
-          Clear Draft
-        </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="rounded-full px-2 h-8 flex items-center gap-1"
+                >
+                  <Headers size={16} />
+                  <ChevronDown size={12} />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-32 p-0">
+                <div className="flex flex-col">
+                  {[1, 2, 3].map((level) => (
+                    <Button
+                      key={level}
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        console.log(
+                          "Before toggle - isActive:",
+                          editor.isActive("heading", { level })
+                        );
+                        editor
+                          .chain()
+                          .focus()
+                          .toggleHeading({ level: level as 1 | 2 | 3 })
+                          .run();
+                        // Force a re-render or check the editor state after toggling
+                        console.log(
+                          "After toggle - isActive:",
+                          editor.isActive("heading", { level })
+                        );
+                      }}
+                      className={`justify-start rounded-none ${
+                        editor.isActive("heading", { level })
+                          ? "bg-gray-100"
+                          : ""
+                      }`}
+                    >
+                      H{level}
+                    </Button>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
 
-        <div className="flex gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => editor.chain().focus().toggleCode().run()}
+              className={`rounded-full p-2 h-8 w-8 ${
+                editor.isActive("code") ? "bg-gray-100" : ""
+              }`}
+            >
+              <Code size={16} />
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setLinkDialogOpen(true)}
+              className={`rounded-full p-2 h-8 w-8 ${
+                editor.isActive("link") ? "bg-gray-100" : ""
+              }`}
+            >
+              <LinkIcon size={16} />
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => editor.chain().focus().setHorizontalRule().run()}
+              className="rounded-full p-2 h-8 w-8"
+            >
+              <MinusSquare size={16} />
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setImageDialogOpen(true)}
+              className="rounded-full p-2 h-8 w-8 ml-auto"
+            >
+              <ImageIcon size={16} />
+            </Button>
+          </div>
+
+          {/* Editor Content */}
+          <div className="min-h-[300px] font-serif text-lg">
+            <EditorContent editor={editor} />
+          </div>
+        </div>
+
+        {/* Link Dialog */}
+        <Dialog open={linkDialogOpen} onOpenChange={setLinkDialogOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Add Link</DialogTitle>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <Input
+                type="url"
+                placeholder="https://example.com"
+                value={linkUrl}
+                onChange={(e) => setLinkUrl(e.target.value)}
+                autoFocus
+              />
+            </div>
+            <DialogFooter>
+              <Button
+                variant="outline"
+                onClick={() => setLinkDialogOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button onClick={setLink}>Add Link</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        {/* Image Dialog */}
+        <Dialog open={imageDialogOpen} onOpenChange={setImageDialogOpen}>
+          <DialogContent className="sm:max-w-md">
+            {isLoading ? (
+              <div>Loading.......</div>
+            ) : (
+              <>
+                <DialogHeader>
+                  <DialogTitle>Add Image</DialogTitle>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  <div className="flex items-center justify-between">
+                    <FileUpload
+                      onChange={(event) => {
+                        setSelectedFile(event.target.files?.[0] || null);
+                        console.log(
+                          "File selected:",
+                          event.target.files?.[0]?.name
+                        );
+                      }}
+                    />
+                  </div>
+                </div>
+                <DialogFooter>
+                  <Button
+                    variant="outline"
+                    onClick={() => setImageDialogOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+
+                  <Button
+                    onClick={() => {
+                      uploadAndAddImage(selectedFile);
+                    }}
+                  >
+                    Add Image
+                  </Button>
+                </DialogFooter>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
+
+        {/* Publish Controls */}
+        <div className="flex justify-between gap-2 mt-8">
           <Button
             variant="outline"
-            className="rounded-full px-6"
-            onClick={handleManualSave}
+            className="rounded-full px-6 text-red-600 hover:text-red-700 hover:bg-red-50"
+            onClick={clearSavedContent}
           >
-            Save Draft
+            Clear Draft
           </Button>
-          <Button className="rounded-full px-6 bg-green-600 hover:bg-green-700">
-            Publish
-          </Button>
+
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              className="rounded-full px-6"
+              onClick={handleManualSave}
+            >
+              Save Draft
+            </Button>
+
+            <Button
+              className="rounded-full px-6 bg-green-600 hover:bg-green-700"
+              onClick={handleManualSubmit}
+            >
+              Submit
+            </Button>
+          </div>
         </div>
+
+        <style jsx global>{`
+          .ProseMirror h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 0.67em;
+            margin-bottom: 0.67em;
+          }
+
+          .ProseMirror h2 {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 0.83em;
+            margin-bottom: 0.83em;
+          }
+
+          .ProseMirror h3 {
+            font-size: 1.17em;
+            font-weight: bold;
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+          .ProseMirror {
+            min-height: 300px;
+            outline: none;
+          }
+          .ProseMirror a {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+          .ProseMirror p.is-editor-empty:first-child::before {
+            content: attr(data-placeholder);
+            float: left;
+            color: #adb5bd;
+            pointer-events: none;
+            height: 0;
+          }
+          .ProseMirror img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5em 0;
+          }
+        `}</style>
       </div>
-
-      <style jsx global>{`
-        .ProseMirror h1 {
-          font-size: 2em;
-          font-weight: bold;
-          margin-top: 0.67em;
-          margin-bottom: 0.67em;
-        }
-
-        .ProseMirror h2 {
-          font-size: 1.5em;
-          font-weight: bold;
-          margin-top: 0.83em;
-          margin-bottom: 0.83em;
-        }
-
-        .ProseMirror h3 {
-          font-size: 1.17em;
-          font-weight: bold;
-          margin-top: 1em;
-          margin-bottom: 1em;
-        }
-        .ProseMirror {
-          min-height: 300px;
-          outline: none;
-        }
-        .ProseMirror a {
-          color: blue;
-          text-decoration: underline;
-          cursor: pointer;
-        }
-        .ProseMirror p.is-editor-empty:first-child::before {
-          content: attr(data-placeholder);
-          float: left;
-          color: #adb5bd;
-          pointer-events: none;
-          height: 0;
-        }
-        .ProseMirror img {
-          max-width: 100%;
-          height: auto;
-          display: block;
-          margin: 1.5em 0;
-        }
-      `}</style>
-    </div>
+    </>
   );
 };
 

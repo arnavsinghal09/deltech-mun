@@ -27,13 +27,15 @@ const committeeData = {
       name: "Aniket Basu",
       position: "Speaker",
       bio: "Aniket Basu",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Aniket.jpeg",
     },
     {
       name: "Mr. Kushal Dubey",
       position: "Deputy Speaker",
       bio: "Mr. Kushal Dubey",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Kushal.jpeg",
     },
   ],
 };

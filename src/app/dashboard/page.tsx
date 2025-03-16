@@ -11,8 +11,6 @@ export default async function Dashboard() {
 
   if(!user){redirect("/auth/signin")}
 
-  console.log("Hehehe", user);
-
   return (
     <div className="overflow-auto justify-center items-center  w-full break-words">
       {JSON.stringify(user)}

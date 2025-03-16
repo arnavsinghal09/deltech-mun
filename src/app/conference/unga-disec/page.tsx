@@ -28,13 +28,15 @@ const committeeData = {
       name: "Mr. Ishaan Jain",
       position: "Chairperson",
       bio: "Ishaan Jain",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Ishan.jpeg",
     },
     {
       name: "Mr. Ranjeet Hudda",
       position: "Vice-Chairperson",
       bio: "Mr. Ranjeet Hudda",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Ranjeet.jpg",
     },
   ],
 };

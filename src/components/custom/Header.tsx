@@ -14,8 +14,6 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 export default async function Header() {
   const user = await currentUser();
 
-  console.log("Hehehe", user);
-
   return (
     <div className="w-full bg-gradient-to-r from-blue-100 via-white to-blue-100 backdrop-blur-sm z-50 border-b border-b-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +24,7 @@ export default async function Header() {
           <div className="hidden md:flex space-x-8">
             {[
               { name: "Home", href: "/" },
-              { name: "Conferences", href: "/conference" },
+              { name: "Conference", href: "/conference" },
               { name: "Blog", href: "/blog" },
               { name: "Members", href: "/members" },
               { name: "About", href: "/" },

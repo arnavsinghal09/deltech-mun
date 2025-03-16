@@ -15,48 +15,110 @@ const administrative = [
   {
     name: "Dhruv Rustagi",
     role: "President",
-    src: "/members/jane-doe.jpg",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/administrative-council/Dhruv.JPG",
   },
   {
     name: "Arin Singhal",
     role: "Vice President",
-    src: "/members/jane-doe.jpg",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/administrative-council/Arin.jpg",
   },
   {
     name: "Sanskar Srivastava",
     role: "Chief Advisor",
-    src: "/members/jane-doe.jpg",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/administrative-council/Sanskar.JPG",
   },
 ];
 
 const senior = [
   {
-    name: "Michael Johnson",
-    role: "Senior Delegate",
-    description:
-      "Michael is a senior delegate with a passion for international relations and diplomacy.",
-    src: "/members/michael-johnson.jpg",
+    name: "Mohit Daber",
+    role: "Director of MUN",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Mohit.JPG",
   },
   {
-    name: "Sarah Williams",
-    role: "Senior Delegate",
-    description:
-      "Sarah is a senior delegate with a passion for international relations and diplomacy.",
-    src: "/members/sarah-williams.jpg",
+    name: "Dev Adlakha",
+    role: "Director of Debating",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Dev.jpg",
   },
   {
-    name: "David Lee",
-    role: "Senior Delegate",
-    description:
-      "David is a senior delegate with a passion for international relations and diplomacy.",
-    src: "/members/david-lee.jpg",
+    name: "Prashant Kaushik",
+    role: "Director of Public Relations",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Prashant.jpg",
   },
   {
-    name: "Lisa Chen",
-    role: "Senior Delegate",
-    description:
-      "Lisa is a senior delegate with a passion for international relations and diplomacy.",
-    src: "/members/lisa-chen.jpg",
+    name: "Ritika Mehar",
+    role: "Co-Director of Publicity",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Ritika.jpeg",
+  },
+  {
+    name: "Rachit Singhal",
+    role: "Co-Director of Publicity",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Rachit+Singhal.png",
+  },
+  {
+    name: "Pranav Gupta",
+    role: "Director of Adminsitration",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Pranav.jpg",
+  },
+  {
+    name: "Shambhavi Singh",
+    role: "Director of Internal Affairs",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Shambhavi+Singh.jpg",
+  },
+  {
+    name: "Khyati Tuli",
+    role: "Director of Finance and Corporate",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Khyati.jpg",
+  },
+  {
+    name: "Mahatava Ananda",
+    role: "Director of Design",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Mahatva.jpg",
+  },
+  {
+    name: "Pari Jain",
+    role: "Director of Creation and Illustrations",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Pari.jpg",
+  },
+  {
+    name: "Chaitanya Roy",
+    role: "Director of Logistics",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Chaitanya.PNG",
+  },
+  {
+    name: "Nishit Jain",
+    role: "Director of Content",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Nishit.jpg",
+  },
+  {
+    name: "Kushal Majumdar",
+    role: "Director of Operations",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Kushal.jpg",
+  },
+  {
+    name: "Tushit Kapur",
+    role: "Director of External Affairs",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Tushit.png",
+  },
+  {
+    name: "Gaurav Kapoor",
+    role: "Director of Social and Outreach",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Gaurav+Kapoor.jpg",
+  },
+  {
+    name: "Rahul Sharma",
+    role: "Co-Director of Technical Affairs",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Rahul.jpg",
+  },
+  {
+    name: "Soumya",
+    role: "Director of Videography",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Soumya.jpg",
+  },
+  {
+    name: "Evam Bansal",
+    role: "Director of Cross Delegations",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Evam.jpg",
   },
 ];
 
@@ -134,7 +196,8 @@ const junior = [
   {
     name: "Keshav Bajaj",
     role: "Junior Council",
-    src: "/members/daniel-garcia.jpg",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Keshav.jpeg",
+    linkedin: "https://www.linkedin.com/in/keshav-bajaj-3b7462193/",
   },
   {
     name: "Parth Malik",

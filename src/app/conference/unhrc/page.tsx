@@ -33,13 +33,15 @@ const committeeData = {
       name: "Mr. Pranjal Jain",
       position: "Vice-President",
       bio: "Mr. Pranjal Jain",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Pranjal.jpeg",
     },
     {
       name: "Mr. Vinayak Mishra",
       position: "Research Associate",
       bio: "Mr. Vinayak Mishra",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Vinayak.jpeg",
     },
   ],
 };

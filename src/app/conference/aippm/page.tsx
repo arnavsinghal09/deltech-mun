@@ -33,7 +33,8 @@ const committeeData = {
       name: "Mr. Saksham Tuteja",
       position: "Vice Chairperson",
       bio: "Mr. Saksham Tuteja",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Saksham.jpeg",
     },
   ],
 };

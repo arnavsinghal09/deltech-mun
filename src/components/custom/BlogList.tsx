@@ -1,63 +1,83 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import BlogCard from "./BlogCard";
-import { BlogPost } from "../../lib/BlogPost";
 import { Button } from "../ui/button";
+import {useBlog} from "../../hooks/use-blog"
+import { Skeleton } from "../ui/skeleton";
+import { Blog } from "../../lib/blog";
 
 export default function BlogList() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const { posts, loading, error, hasMore, fetchPosts } = useBlog({
+    pageSize: 10,
+    published: true,
+  });
 
-  useEffect(() => {
+  // Initial fetch on component mount
+  React.useEffect(() => {
     fetchPosts();
-  }, []);
-
-  const fetchPosts = async () => {
-    setLoading(true);
-
-    // Generate unique IDs based on timestamp and index
-    const newPosts: BlogPost[] = Array.from({ length: 10 }, (_, i) => ({
-      id:  (page - 1) * 10 + i+1, 
-      title: `Blog Post ${(page - 1) * 10 + i + 1}`,
-      author: {
-        name: "John Doe",
-        avatar: `/public/placeholder.avif`,
-      },
-      date: new Date().toLocaleDateString(),
-      excerpt:
-        "This is a short excerpt of the blog post. It gives a brief overview of what the post is about...",
-      tags: ["Technology", "Web Development"],
-      readingTime: Math.floor(Math.random() * 10) + 5,
-      image: `/assets/placeholders/placeholder2.jpg?height=200&width=400&v=${Date.now()}`, // Cache busting
-    }));
-
-    setPosts((prevPosts) => [...prevPosts, ...newPosts]);
-    setPage((prevPage) => prevPage + 1);
-    setLoading(false);
-  };
+  }, [fetchPosts]);
 
   return (
     <div className="container mx-auto px-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <BlogCard key={post.id} post={post} />
-        ))}
-      </div>
-      {loading ? (
-        <div className="text-center mt-8">
-          <p className="text-gray-600">Loading more posts...</p>
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6">
+          {error}
         </div>
-      ) : (
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post: Blog) => (
+          <BlogCard key={post.id} blog={post} />
+        ))}
+
+        {loading &&
+          Array.from({ length: 3 }).map((_, index) => (
+            <div
+              key={`skeleton-${index}`}
+              className="border rounded-lg overflow-hidden shadow-sm"
+            >
+              <Skeleton className="h-48 w-full" />
+              <div className="p-4">
+                <Skeleton className="h-6 w-3/4 mb-2" />
+                <Skeleton className="h-4 w-1/2 mb-4" />
+                <Skeleton className="h-20 w-full mb-4" />
+                <div className="flex justify-between">
+                  <Skeleton className="h-8 w-16" />
+                  <Skeleton className="h-8 w-16" />
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
+
+      {!loading && hasMore && (
         <Button
           onClick={fetchPosts}
           className="block mx-auto mt-8"
           variant="default"
-          disabled={loading}
         >
           Load More
         </Button>
+      )}
+
+      {loading && !posts.length && (
+        <div className="text-center mt-8">
+          <p className="text-gray-600">Loading posts...</p>
+        </div>
+      )}
+
+      {!loading && !hasMore && posts.length > 0 && (
+        <div className="text-center mt-8">
+          <p className="text-gray-600">You've reached the end!</p>
+        </div>
+      )}
+
+      {!loading && !hasMore && posts.length === 0 && (
+        <div className="text-center mt-8 p-8 border rounded-lg">
+          <h3 className="text-xl font-medium mb-2">No posts found</h3>
+          <p className="text-gray-600">Check back later for new content.</p>
+        </div>
       )}
     </div>
   );

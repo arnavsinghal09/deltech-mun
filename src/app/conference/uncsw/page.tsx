@@ -27,17 +27,18 @@ const committeeData = {
       name: "Ms. Kashish Gumber",
       position: "Chairperson",
       bio: "Ms. Kashish Gumber",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Kasish.jpeg",
     },
     {
       name: "Mr. Bhavya Bhardwaj",
       position: "Vice-Chairperson",
       bio: "Mr. Bhavya Bhardwaj",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Bhavya.jpeg",
     },
   ],
 };
-
 
 // Simple fade-in animation
 const fadeIn = {

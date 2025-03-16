@@ -26,7 +26,8 @@ const committeeData = {
       name: "Ms. Shreya Chatterjee",
       position: "Editor-in-Chief",
       bio: "Ms. Shreya Chatterjee",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Shreya.jpeg",
     },
   ],
 };
