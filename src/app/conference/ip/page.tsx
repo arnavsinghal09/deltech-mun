@@ -120,8 +120,8 @@ export default function CommitteePage() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: index * 0.2, duration: 0.5 }}
               >
-                <Card className="bg-white border-gray-200 shadow-md w-80 h-full">
-                  <div className="relative h-64 w-full overflow-hidden rounded-t-lg">
+                <Card className="bg-white border-gray-200 shadow-md w-96 h-full">
+                  <div className="relative h-96 w-full overflow-hidden rounded-t-lg">
                     <Image
                       src={member.image}
                       alt={member.name}
