@@ -12,14 +12,16 @@ export default function ConferencePage() {
     {
       name: "UNGA",
       redirect: "/conference/unga-disec",
-      imagePath: "/images/unga.png",
+      imageUrl:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/committee-photos/unga-disec.png",
       details:
         "The United Nations General Assembly (UNGA) is the main deliberative, policymaking, and representative body of the UN.",
     },
     {
       name: "UNHRC",
       redirect: "/conference/unhrc",
-      imagePath: "/images/unhrc.png",
+      imageUrl:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/committee-photos/unhrc.png",
       details:
         "The United Nations Human Rights Council (UNHRC) addresses human rights violations and promotes the protection of fundamental freedoms worldwide.",
     },
@@ -27,7 +29,8 @@ export default function ConferencePage() {
     {
       name: "UNCSW",
       redirect: "/conference/uncsw",
-      imagePath: "/images/uncsw.png",
+      imageUrl:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/committee-photos/uncsw.png",
       details:
         "The United Nations Commission on the Status of Women (UNCSW) promotes gender equality and the empowerment of women globally.",
     },
@@ -35,21 +38,24 @@ export default function ConferencePage() {
     {
       name: "AIPPM",
       redirect: "/conference/aippm",
-      imagePath: "/images/aippm.png",
+      imageUrl:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/committee-photos/aippm.png",
       details:
         "The All India Political Parties Meet (AIPPM) is a platform for political representatives to discuss national issues.",
     },
     {
       name: "Lok Sabha",
       redirect: "/conference/lok-sabha",
-      imagePath: "/images/lok-sabha.png",
+      imageUrl:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/committee-photos/lok-sabha.png",
       details:
         "The Lok Sabha is the lower house of the Parliament of India, responsible for making laws and overseeing the executive.",
     },
     {
       name: "International Press",
       redirect: "/conference/ip",
-      imagePath: "/images/press.png",
+      imageUrl:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/committee-photos/ip.png",
       details:
         "This committee focuses on the role of the press in promoting freedom of speech, democracy, and ethical journalism worldwide.",
     },
@@ -73,10 +79,10 @@ export default function ConferencePage() {
         </Button>
       </section>
 
-      <section className="my-12">
-        <h2 className="text-3xl font-bold mb-6">Committees</h2>
+      <div className="my-12">
+        <div className="text-3xl font-bold mb-6">Committees</div>
         {/* Add a detailed schedule here */}
-      </section>
+      </div>
       <div className=" ">
         <motion.div
           key="senior-content"
@@ -94,15 +100,15 @@ export default function ConferencePage() {
           ))}
         </motion.div>
       </div>
-      <section className="my-12">
-        <h2 className="text-3xl font-bold mb-6">Keynote Speakers</h2>
+      <div className="my-12">
+        <div className="text-3xl font-bold mb-6">Keynote Speakers</div>
         {/* Add information about keynote speakers here */}
-      </section>
+      </div>
 
       <section className="my-12">
-        <h2 className="text-3xl font-bold mb-6">
+        <div className="text-3xl font-bold mb-6">
           Previous Conference Highlights
-        </h2>
+        </div>
         {/* Add highlights from previous conferences here */}
       </section>
 

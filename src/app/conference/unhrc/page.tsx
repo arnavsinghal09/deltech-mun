@@ -27,7 +27,8 @@ const committeeData = {
       name: "Mr. Dhruv Jain",
       position: "President",
       bio: "Mr. Dhruv Jain",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Dhruv+Jain.jpg",
     },
     {
       name: "Mr. Pranjal Jain",

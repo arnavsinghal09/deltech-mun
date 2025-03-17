@@ -27,7 +27,8 @@ const committeeData = {
       name: "Mr. Akshat Mohan Awasthy",
       position: "Chairperson",
       bio: "Akshat Mohan Awasthi",
-      image: "/api/placeholder/300/300",
+      image:
+        "https://mun-website-images.s3.ap-south-1.amazonaws.com/eb-photos/Akshat.jpg",
     },
     {
       name: "Mr. Saksham Tuteja",
