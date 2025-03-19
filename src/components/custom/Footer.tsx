@@ -1,6 +1,7 @@
 import React from "react";
 import { DeltechWhite } from "../../../public /logos/deltech-white";
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 export default function Footer() {
   return (
@@ -22,10 +23,10 @@ export default function Footer() {
             <div className="font-bold mb-4">Quick Links</div>
             <div className="space-y-2 text-gray-400">
               {[
-                { name: "Home", path: "#" },
-                { name: "About Us", path: "#" },
-                { name: "Conferences", path: "#" },
-                { name: "Blog", path: "#" },
+                { name: "Home", path: "/" },
+                { name: "About Us", path: "/" },
+                // { name: "Conferences", path: "#" },
+                { name: "Blog", path: "/blog" },
               ].map((link, index) => (
                 <div key={index}>
                   <Link href={link.path} className="hover:text-white">
@@ -40,16 +41,43 @@ export default function Footer() {
             <div>
               <div className="font-bold mb-4">Contact</div>
               <div className="space-y-2 text-gray-400">
-                <div>
-                  Email:{" "}
-                  <a
-                    href="mailto:info@munsociety.org"
-                    className="hover:text-white"
-                  >
-                    info@deltech.org
-                  </a>
+                <div className="flex-col space-y-2 items-center justify-center">
+                  <div>Email:</div>
+                  <div>
+                    <a
+                      href="mailto:deltech.mun@gmail.com"
+                      className="text-gray-300 hover:text-white"
+                    >
+                      deltech.mun@gmail.com
+                    </a>
+                  </div>
                 </div>
-                <div>Phone: (555)69696969</div>
+                {/* Name Card */}
+                <Card className="bg-gray-800 border-gray-700 text-white w-full mb-4">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-md font-bold">
+                      Mohit Daber
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="text-gray-300 hover:text-white">
+                      +91 96671 36318
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gray-800 border-gray-700 text-white w-full mb-4">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-md font-bold">
+                      Evam Bansal
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="text-gray-300 hover:text-white">
+                      +91 97119 42290
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
 

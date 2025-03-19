@@ -41,6 +41,11 @@ const senior = [
     src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Dev.jpg",
   },
   {
+    name: "Evam Bansal",
+    role: "Director of Cross Delegations",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Evam.jpg",
+  },
+  {
     name: "Prashant Kaushik",
     role: "Director of Public Relations",
     src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Prashant.jpg",
@@ -115,11 +120,6 @@ const senior = [
     role: "Director of Videography",
     src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Soumya.jpg",
   },
-  {
-    name: "Evam Bansal",
-    role: "Director of Cross Delegations",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Evam.jpg",
-  },
 ];
 
 const junior = [
@@ -184,7 +184,7 @@ const junior = [
   {
     name: "Pushpa Shikhar Singh",
     role: "Junior Council",
-    src: "/members/daniel-garcia.jpg",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Shikhar.jpg",
     linkedin: "https://www.linkedin.com/in/pushpa-shikhar-singh-709894212/",
   },
   {
@@ -202,7 +202,7 @@ const junior = [
   {
     name: "Parth Malik",
     role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Parth.HEIC",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Parth.png",
     linkedin: "https://www.linkedin.com/in/parth-malik-676966286/",
   },
   {

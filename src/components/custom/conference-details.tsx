@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { FlipWords } from "../ui/flip-words";
 import Carousel from "../ui/carousel";
+import CampusAmbassadorProgram from "./CampusAmbassador"
 
 const ConferenceDetails = () => {
   const words = ["Diplomats", "Change-Makers", "Visionaries", "Global Leaders"];
@@ -214,7 +215,10 @@ const ConferenceDetails = () => {
               <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                 Register Now
               </Button>
-              <Button variant={"register"} className="bg-white text-black px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+              <Button
+                variant={"register"}
+                className="bg-white text-black px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              >
                 View Portfolio Matrix
               </Button>
             </div>
@@ -223,6 +227,7 @@ const ConferenceDetails = () => {
               Limited seats available. Round 1 registration ends March 31, 2025.
             </p>
           </div>
+          <CampusAmbassadorProgram />
         </div>
       </div>
       <div>
