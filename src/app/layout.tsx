@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Provider from "./providers";
-import Header from "../components/custom/Header";
+import Header2 from "../components/custom/Header2";
 import Footer from "../components/custom/Footer";
 import React from "react";
 
@@ -33,7 +33,7 @@ export default async function RootLayout({
       >
         <Provider>
           <div className="flex flex-col min-h-screen">
-            <Header />
+            <Header2 />
             <div className="min-h-screen pt-[headerHeight]">{children}</div>
             <Footer />
           </div>
