@@ -205,16 +205,16 @@ const junior = [
     src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Parth.png",
     linkedin: "https://www.linkedin.com/in/parth-malik-676966286/",
   },
-  {
-    name: "Tisha Gupta",
-    role: "Junior Council",
-    src: "/members/daniel-garcia.jpg",
-  },
-  {
-    name: "Atiyab",
-    role: "Junior Council",
-    src: "/members/daniel-garcia.jpg",
-  },
+  // {
+  //   name: "Tisha Gupta",
+  //   role: "Junior Council",
+  //   src: "/members/daniel-garcia.jpg",
+  // },
+  // {
+  //   name: "Atiyab",
+  //   role: "Junior Council",
+  //   src: "/members/daniel-garcia.jpg",
+  // },
 ];
 
 export default function MembersPage() {
