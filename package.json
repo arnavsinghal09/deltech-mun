@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "postinstall": "prisma generate", 
+    "postinstall": "prisma generate",
     "build": "prisma generate && next build",
     "start": "next start"
   },
@@ -61,7 +61,8 @@
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
     "date-fns": "^3.6.0",
-    "embla-carousel-react": "8.5.1",
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "formidable": "^3.5.2",
     "framer-motion": "^12.5.0",
     "input-otp": "1.4.1",

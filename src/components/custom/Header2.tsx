@@ -3,15 +3,15 @@ import { DeltechBlack } from "../../../public /logos/deltech-black";
 import { currentUser } from "@clerk/nextjs/server";
 import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
-import { motion, AnimatePresence } from "framer-motion";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
-
-import RedirectButtonClient from "./redirect-button-client";
 import React from "react";
-import { UserDropdown } from "./UserDropdown";
+
 import { DialogTitle } from "@radix-ui/react-dialog";
 
-export default async function Header() {
+// Define the external blog URL
+const BLOG_URL = "https://medium.com/@deltech.mun";
+
+export default async function Header2() {
   const user = await currentUser();
 
   return (
@@ -21,46 +21,39 @@ export default async function Header() {
           <Link href={"/"} className="flex items-center space-x-2">
             <DeltechBlack className="h-36 w-36" />
           </Link>
-          <div className="hidden md:flex md:space-x-8 lg:space-x-12 space-x-16">
-            {[
-              { name: "Home", href: "/" },
-              { name: "Blog", href: "/blog" },
-              { name: "Members", href: "/members" },
-            ].map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-gray-700 relative group"
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 ease-in-out"></span>
-              </Link>
-            ))}
+          <div className="hidden sm:flex sm:space-x-8 lg:space-x-12 space-x-16">
+            <Link href="/" className="text-gray-700 relative group">
+              Home
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 ease-in-out"></span>
+            </Link>
+            <a
+              href={BLOG_URL}
+              className="text-gray-700 relative group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Blog
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 ease-in-out"></span>
+            </a>
+
+            <Link href="/members" className="text-gray-700 relative group">
+              Members
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-all duration-500 ease-in-out"></span>
+            </Link>
           </div>
 
-          {user ? (
-            <div className="flex  space-x-4">
-              <DialogBar className="md:hidden" />
-              <UserDropdown />
-            </div>
-          ) : (
-            <>
-              <DialogBar className="md:hidden" />
-              <a
-                href=" https://forms.gle/utvTMSG6oKGPpzYX8"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="rounded-full bg-blue-600" variant="default">Register Now</Button>
-              </a>
-              {/* <RedirectButtonClient
-                path="/auth/signin"
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-              >
+          <>
+            <DialogBar className="sm:hidden" />
+            <a
+              href="https://forms.gle/utvTMSG6oKGPpzYX8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="rounded-full bg-blue-600" variant="default">
                 Register Now
-              </RedirectButtonClient> */}
-            </>
-          )}
+              </Button>
+            </a>
+          </>
         </div>
       </div>
     </div>
@@ -70,7 +63,7 @@ export default async function Header() {
 export function DialogBar({ className }: { className?: string }) {
   const menuItems = [
     { label: "Home", href: "/" },
-    { label: "Blog", href: "/blog" },
+    { label: "Blog", href: BLOG_URL, external: true }, // Updated to external link
     { label: "Members", href: "/members" },
   ];
 
@@ -86,7 +79,16 @@ export function DialogBar({ className }: { className?: string }) {
         <div className="flex flex-col items-center space-y-4">
           {menuItems.map((item) => (
             <div key={item.label}>
-              {item.href ? (
+              {item.external ? (
+                <a
+                  href={item.href}
+                  className="text-lg font-medium text-primary hover:text-primary-focus transition-colors duration-200"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.label}
+                </a>
+              ) : item.href ? (
                 <Link
                   href={item.href}
                   className="text-lg font-medium text-primary hover:text-primary-focus transition-colors duration-200"

@@ -95,7 +95,7 @@ const CampusAmbassadorProgram = () => {
                 <CardTitle className="text-lg">{benefit.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 text-sm">{benefit.description}</p>
+                <div className="text-gray-600 text-sm">{benefit.description}</div>
               </CardContent>
             </Card>
           </motion.div>

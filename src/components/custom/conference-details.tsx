@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import CountdownTimer from "./CountdownTimer";
 import { Button } from "../ui/button";
 import CommitteeCards from "./CommitteeCards";
+// import ImageCarousel from "./ImageCarousel";
 import {
   ArrowRight,
   CalendarIcon,
@@ -12,7 +13,8 @@ import {
 } from "lucide-react";
 import { FlipWords } from "../ui/flip-words";
 import Carousel from "../ui/carousel";
-import CampusAmbassadorProgram from "./CampusAmbassador"
+import CampusAmbassadorProgram from "./CampusAmbassador";
+import Image from "next/image";
 
 const ConferenceDetails = () => {
   const words = ["Diplomats", "Change-Makers", "Visionaries", "Global Leaders"];
@@ -21,21 +23,26 @@ const ConferenceDetails = () => {
     const slideData = [
       {
         src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/mun-pics/IMG_8713.jpg",
+        alt: "DelTech MUN Event 1",
       },
       {
         src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/mun-pics/DSC08400.jpg",
+        alt: "DelTech MUN Event 2",
       },
-
       {
         src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/mun-pics/DSC08044.jpg",
+        alt: "DelTech MUN Event 3",
       },
     ];
+
     return (
       <div className="relative overflow-hidden w-full h-full py-20">
         <div className="ml-32">
           <div className="text-4xl font-bold m-6">Highlights</div>
         </div>
+   
         <Carousel slides={slideData} />
+
         <motion.div
           className="absolute top-10 right-10 w-40 h-40 bg-blue-300 opacity-40 rounded-full blur-3xl"
           animate={{ y: [0, 30, 0] }}
@@ -211,21 +218,17 @@ const ConferenceDetails = () => {
 
           {/* CTA */}
           <div className="text-center">
-            <div className="flex justify-center space-x-4">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-4 sm:space-y-0">
+              <Button className="w-full max-w-48 sm:max-w-60 bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-md sm:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                 Register Now
               </Button>
               <Button
-                variant={"register"}
-                className="bg-white text-black px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                variant="register"
+                className="w-full max-w-48 sm:max-w-60 bg-white text-black px-8 py-6  text-md sm:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 View Portfolio Matrix
               </Button>
             </div>
-
-            <p className="mt-4 text-gray-600">
-              Limited seats available. Round 1 registration ends March 31, 2025.
-            </p>
           </div>
           <CampusAmbassadorProgram />
         </div>
