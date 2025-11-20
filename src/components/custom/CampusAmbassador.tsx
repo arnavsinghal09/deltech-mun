@@ -69,7 +69,7 @@ const CampusAmbassadorProgram = () => {
           variant="outline"
           className="mb-4 px-4 py-1 text-blue-600 border-blue-200 bg-blue-50"
         >
-          DelTech MUN 2025
+          DelTech MUN 2026
         </Badge>
         <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
           Campus Ambassador Program
@@ -120,7 +120,7 @@ const CampusAmbassadorProgram = () => {
                 <span className="text-blue-600 text-xs font-bold">1</span>
               </div>
               <span className="text-gray-700">
-                Promote DelTech MUN 2025 events at your institution
+                Promote DelTech MUN 2026 events at your institution
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -157,7 +157,7 @@ const CampusAmbassadorProgram = () => {
           <div className="mb-6 md:mb-0">
             <h3 className="text-xl font-bold mb-2">Ready to Represent?</h3>
             <p className="opacity-90">
-              Applications close on March 15, 2025. Limited positions available.
+              Applications Opening Soon.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
