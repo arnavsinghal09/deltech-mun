@@ -161,7 +161,7 @@ const CampusAmbassadorProgram = () => {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="https://unstop.com/internships/campus-ambassador-deltech-model-united-nations-and-debating-society-1433944?lb=q6QA77Xl">
+            <a href=" ">
               <Button
                 asChild
                 className="bg-white text-blue-600 hover:bg-blue-50"
@@ -174,7 +174,8 @@ const CampusAmbassadorProgram = () => {
               className="bg-transparent border-2 border-white hover:bg-white/10"
             >
               <a
-                href="https://unstop.com/internships/campus-ambassador-deltech-model-united-nations-and-debating-society-1433944?lb=q6QA77Xl"
+              // link for campus ambasador 2025 - https://unstop.com/internships/campus-ambassador-deltech-model-united-nations-and-debating-society-1433944?lb=q6QA77Xl
+                href=" "
                 className="flex items-center gap-2"
               >
                 Apply Now <ArrowRight className="w-4 h-4" />

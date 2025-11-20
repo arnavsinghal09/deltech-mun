@@ -45,7 +45,8 @@ export default async function Header2() {
           <>
             <DialogBar className="sm:hidden" />
             <a
-              href="https://forms.gle/utvTMSG6oKGPpzYX8"
+            // link for del apps 2025 - https://forms.gle/utvTMSG6oKGPpzYX8
+              href=" "
               target="_blank"
               rel="noopener noreferrer"
             >
