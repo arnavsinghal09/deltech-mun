@@ -80,7 +80,7 @@ const ConferenceDetails = () => {
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.8 }}
             className="text-5xl sm:text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-blue-800 to-indigo-800 bg-clip-text text-transparent  mb-10"
           >
-            DelTech MUN 2025
+            DelTech MUN 2026
           </motion.div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
@@ -137,7 +137,7 @@ const ConferenceDetails = () => {
             <div className=" bg-white/70 backdrop-blur-sm p-4 rounded-lg flex items-center gap-3 shadow-md">
               <CalendarIcon className="text-blue-600 w-6 h-6" />
               <div>
-                <p className="font-semibold">April 19-20, 2025</p>
+                <p className="font-semibold">January 10-11, 2026</p>
                 <p className="text-sm text-gray-500">Mark your calendar</p>
               </div>
             </div>
@@ -172,7 +172,7 @@ const ConferenceDetails = () => {
             <p className="mb-4">
               Engage in thought-provoking debates, hone your public speaking
               skills, and contribute to meaningful discussions on pressing
-              global issues. DelTech MUN 2025 is your platform to make a
+              global issues. DelTech MUN 2026 is your platform to make a
               difference.
             </p>
             <div className="flex flex-wrap gap-2">

@@ -59,12 +59,12 @@ export default function Footer() {
                   <Card className="bg-gray-800 border-gray-700 text-white w-full">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-md font-bold">
-                        Mohit Daber
+                        Tanmay Solanki
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-0">
                       <div className="text-gray-300 hover:text-white">
-                        +91 96671 36318
+                        +91 95600 61606
                       </div>
                     </CardContent>
                   </Card>
@@ -72,12 +72,12 @@ export default function Footer() {
                   <Card className="bg-gray-800 border-gray-700 text-white w-full">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-md font-bold">
-                        Evam Bansal
+                        Arnav Singhal
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-0">
                       <div className="text-gray-300 hover:text-white">
-                        +91 97119 42290
+                        +91 98685 54988
                       </div>
                     </CardContent>
                   </Card>
@@ -108,7 +108,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <div>&copy; 2025 DelTech MUN & DebSoc. All rights reserved.</div>
+          <div>&copy; 2026 DelTech MUN & DebSoc. All rights reserved.</div>
         </div>
       </div>
     </div>
