@@ -10,7 +10,7 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    const targetDate = new Date("2026-01-10T00:00:00");
+    const targetDate = new Date("2026-01-31T00:00:00");
 
     const timer = setInterval(() => {
       const now = new Date();

@@ -18,6 +18,7 @@ import Image from "next/image";
 
 const ConferenceDetails = () => {
   const words = ["Diplomats", "Change-Makers", "Visionaries", "Global Leaders"];
+  const portfolioSheetUrl = "https://docs.google.com/spreadsheets/d/1DI66i6bnICdUUb3qMv361aq3lSpVQric17DG1dyPpWQ/edit?usp=sharing";
 
   function DelTechImageCarousel() {
     const slideData = [
@@ -137,7 +138,7 @@ const ConferenceDetails = () => {
             <div className=" bg-white/70 backdrop-blur-sm p-4 rounded-lg flex items-center gap-3 shadow-md">
               <CalendarIcon className="text-blue-600 w-6 h-6" />
               <div>
-                <p className="font-semibold">January 10-11, 2026</p>
+                <p className="font-semibold">31st Jan and 1st Feb, 2026</p>
                 <p className="text-sm text-gray-500">Mark your calendar</p>
               </div>
             </div>
@@ -223,10 +224,13 @@ const ConferenceDetails = () => {
                 Register Now
               </Button>
               <Button
+                asChild
                 variant="register"
                 className="w-full max-w-48 sm:max-w-60 bg-white text-black px-8 py-6  text-md sm:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                View Portfolio Matrix
+                <a href={portfolioSheetUrl} target="_blank" rel="noopener noreferrer">
+                  View Portfolio Matrix
+                </a>
               </Button>
             </div>
           </div>
