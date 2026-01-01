@@ -220,8 +220,10 @@ const ConferenceDetails = () => {
           {/* CTA */}
           <div className="text-center">
             <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-4 sm:space-y-0">
-              <Button className="w-full max-w-48 sm:max-w-60 bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-md sm:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-                Register Now
+              <Button asChild className="w-full max-w-48 sm:max-w-60 bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-md sm:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+                <a href="https://forms.gle/MiN2LFApVbUSFqtk6" target="_blank" rel="noopener noreferrer">
+                  Register Now
+                </a>
               </Button>
               <Button
                 asChild

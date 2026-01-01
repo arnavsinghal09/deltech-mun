@@ -13,208 +13,117 @@ import { link } from "fs";
 
 const administrative = [
   {
-    name: "Dhruv Rustagi",
+    name: "Evam Bansal",
     role: "President",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/administrative-council/Dhruv.JPG",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Evam.jpg",
   },
   {
-    name: "Arin Singhal",
+    name: "Khyati Tuli",
     role: "Vice President",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/administrative-council/Arin.jpg",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Khyati.jpg",
   },
   {
-    name: "Sanskar Srivastava",
+    name: "Pari Jain",
     role: "Chief Advisor",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/administrative-council/Sanskar.JPG",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Pari.jpg",
   },
 ];
 
 const senior = [
   {
-    name: "Mohit Daber",
+    name: "Tanmay Solanki",
     role: "Director of MUN",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Mohit.JPG",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Tanmay.JPG",
+    linkedin: "https://www.linkedin.com/in/tanmay-solanki-b6b385220/"
   },
   {
-    name: "Dev Adlakha",
-    role: "Director of Debating",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Dev.jpg",
+    name: "Arnav Singhal",
+    role: "Director of External Affairs & Cross Delegations",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Arnav.jpg",
+    linkedin: "https://www.linkedin.com/in/arnavsinghal09"
   },
   {
-    name: "Evam Bansal",
-    role: "Director of Cross Delegations",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Evam.jpg",
-  },
-  {
-    name: "Prashant Kaushik",
-    role: "Director of Public Relations",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Prashant.jpg",
-  },
-  {
-    name: "Ritika Mehar",
-    role: "Co-Director of Publicity",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Ritika.jpeg",
-  },
-  {
-    name: "Rachit Singhal",
-    role: "Co-Director of Publicity",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Rachit+Singhal.png",
-  },
-  {
-    name: "Pranav Gupta",
-    role: "Director of Adminsitration",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Pranav.jpg",
-  },
-  {
-    name: "Shambhavi Singh",
+    name: "Nikunj Sharma",
     role: "Director of Internal Affairs",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Shambhavi+Singh.jpg",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Nikunj+Sharma.jpeg",
+    linkedin: "https://www.linkedin.com/in/nikunj-sharma-183862289"
   },
   {
-    name: "Khyati Tuli",
-    role: "Director of Finance and Corporate",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Khyati.jpg",
+    name: "Satyam Kumar",
+    role: "Director of Administration",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Satyam.png",
+    linkedin: "https://www.linkedin.com/in/satyam-kumar-711b54150/"
   },
   {
-    name: "Mahatava Ananda",
+    name: "Raghav Garg",
     role: "Director of Design",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Mahatva.jpg",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Raghav.png",
+    linkedin: "https://www.linkedin.com/in/raaghavgarg/"
+  },
+  // {
+  //   name: "Prabal Wadhwa",
+  //   role: "Director of PR & Publicity",
+  //   src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Raghav.png",
+  // },
+  {
+    name: "Himanshu Sharma",
+    role: "Director of Corporate Affairs",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Himanshu.webp",
+    linkedin: "https://www.linkedin.com/in/himanshu-sharma-2183a429b/"
   },
   {
-    name: "Pari Jain",
-    role: "Director of Creation and Illustrations",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Pari.jpg",
-  },
-  {
-    name: "Chaitanya Roy",
-    role: "Director of Logistics",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Chaitanya.PNG",
-  },
-  {
-    name: "Nishit Jain",
-    role: "Director of Content",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Nishit.jpg",
-  },
-  {
-    name: "Kushal Majumdar",
-    role: "Director of Operations",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Kushal.jpg",
-  },
-  {
-    name: "Tushit Kapur",
-    role: "Director of External Affairs",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Tushit.png",
-  },
-  {
-    name: "Gaurav Kapoor",
-    role: "Director of Social and Outreach",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Gaurav+Kapoor.jpg",
-  },
-  {
-    name: "Rahul Sharma",
-    role: "Co-Director of Technical Affairs",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Rahul.jpg",
-  },
-  {
-    name: "Soumya",
-    role: "Director of Videography",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/senior-council/Soumya.jpg",
-  },
+    name: "Atiyab Ahmed",
+    role: "Director of Corporate Affairs",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/atiyab.jpg",
+  }
 ];
 
 const junior = [
   {
-    name: "Anjan Anand",
+    name: "Aditya Saxena",
     role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Anjan+Anand.png",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/jc-photos/aditya.jpeg",
   },
   {
-    name: "Anukesh Singh",
+    name: "Anish Dash",
     role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Anukesh.jpg",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/jc-photos/anish.jpeg",
   },
   {
-    name: "Arnav Singhal",
+    name: "Archit",
     role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Arnav.jpg",
-    linkedin: "https://www.linkedin.com/in/arnavsinghal09",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/jc-photos/archit.jpeg",
+    
   },
   {
-    name: "Himanshu Sharma",
+    name: "Armaan Kumar",
     role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Himanshu.webp",
-    linkedin: "https://www.linkedin.com/in/himanshu-sharma-2183a429b/",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/jc-photos/armaan.png",
+    
   },
   {
-    name: "Raghav Garg",
+    name: "Harshit Agarwal",
     role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Raghav.png",
-    linkedin: "https://www.linkedin.com/in/raaghavgarg/",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/jc-photos/harshit.jpeg",
+    
   },
   {
-    name: "Tanmay Solanki",
+    name: "Kabir Gambhir",
     role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Tanmay.JPG",
-    linkedin: "https://www.linkedin.com/in/tanmay-solanki-b6b385220/",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/jc-photos/kabir.jpeg",
+    
   },
   {
-    name: "Khush Chawla",
+    name: "Prakhar Goel",
     role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Khush.jpg",
-    linkedin: "https://www.linkedin.com/in/khush-chawla-4b6321299/",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/jc-photos/prakhar.jpeg",
   },
   {
-    name: "Rishita Sinha",
+    name: "Vinay Meena",
     role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Rishita.jpg",
-    linkedin: "https://www.linkedin.com/in/rishita-sinha-2957262a4/",
+    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/jc-photos/vinay.jpeg",
+    
   },
-  {
-    name: "Nikunj Sharma",
-    role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Nikunj+Sharma.jpeg",
-    linkedin: "https://www.linkedin.com/in/nikunj-sharma-183862289",
-  },
-  {
-    name: "Satyam Kumar",
-    role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Satyam.png",
-    linkedin: "https://www.linkedin.com/in/satyam-kumar-711b54150/",
-  },
-  {
-    name: "Pushpa Shikhar Singh",
-    role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Shikhar.jpg",
-    linkedin: "https://www.linkedin.com/in/pushpa-shikhar-singh-709894212/",
-  },
-  {
-    name: "Soumya Shekhar",
-    role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Soumya.jpg",
-    linkedin: "https://www.linkedin.com/in/soumya-shekhar-973039287",
-  },
-  {
-    name: "Keshav Bajaj",
-    role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Keshav.jpeg",
-    linkedin: "https://www.linkedin.com/in/keshav-bajaj-3b7462193/",
-  },
-  {
-    name: "Parth Malik",
-    role: "Junior Council",
-    src: "https://mun-website-images.s3.ap-south-1.amazonaws.com/council-photos/junior-council/Parth.png",
-    linkedin: "https://www.linkedin.com/in/parth-malik-676966286/",
-  },
-  // {
-  //   name: "Tisha Gupta",
-  //   role: "Junior Council",
-  //   src: "/members/daniel-garcia.jpg",
-  // },
-  // {
-  //   name: "Atiyab",
-  //   role: "Junior Council",
-  //   src: "/members/daniel-garcia.jpg",
-  // },
 ];
 
 export default function MembersPage() {

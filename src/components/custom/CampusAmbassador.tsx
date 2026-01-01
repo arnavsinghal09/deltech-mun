@@ -157,7 +157,7 @@ const CampusAmbassadorProgram = () => {
           <div className="mb-6 md:mb-0">
             <h3 className="text-xl font-bold mb-2">Ready to Represent?</h3>
             <p className="opacity-90">
-              Applications Opening Soon.
+              Applications are Live! Apply Now.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -175,7 +175,7 @@ const CampusAmbassadorProgram = () => {
             >
               <a
               // link for campus ambasador 2025 - https://unstop.com/internships/campus-ambassador-deltech-model-united-nations-and-debating-society-1433944?lb=q6QA77Xl
-                href=" "
+                href="https://unstop.com/p/campus-ambassador-deltech-mun-and-debsoc-1617276"
                 className="flex items-center gap-2"
               >
                 Apply Now <ArrowRight className="w-4 h-4" />

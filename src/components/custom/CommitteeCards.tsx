@@ -9,7 +9,7 @@ const CommitteeCards = () => {
           // name: "UNGA",
           redirect: " ",
           imageUrl:
-            "https://mun-website-images.s3.ap-south-1.amazonaws.com/tba.jpg",
+            "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/committee-photos/3.png",
         //   details:
         //     "The United Nations General Assembly (UNGA) is the main deliberative, policymaking, and representative body of the UN.",
         },
@@ -17,7 +17,7 @@ const CommitteeCards = () => {
           // name: "UNHRC",
           redirect: " ",
           imageUrl:
-            "https://mun-website-images.s3.ap-south-1.amazonaws.com/tba.jpg",
+            "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/committee-photos/4.png",
           // details:
           //   "The United Nations Human Rights Council (UNHRC) addresses human rights violations and promotes the protection of fundamental freedoms worldwide.",
         },
@@ -26,7 +26,7 @@ const CommitteeCards = () => {
           // name: "UNCSW",
           redirect: " ",
           imageUrl:
-            "https://mun-website-images.s3.ap-south-1.amazonaws.com/tba.jpg",
+            "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/committee-photos/5.png",
           // details:
           //   "The United Nations Commission on the Status of Women (UNCSW) promotes gender equality and the empowerment of women globally.",
         },
@@ -35,7 +35,7 @@ const CommitteeCards = () => {
           // name: "AIPPM",
           redirect: " ",
           imageUrl:
-            "https://mun-website-images.s3.ap-south-1.amazonaws.com/tba.jpg",
+            "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/committee-photos/6.png",
           // details:
           //   "The All India Political Parties Meet (AIPPM) is a platform for political representatives to discuss national issues.",
         },
@@ -43,7 +43,7 @@ const CommitteeCards = () => {
           // name: "Lok Sabha",
           redirect: " ",
           imageUrl:
-            "https://mun-website-images.s3.ap-south-1.amazonaws.com/tba.jpg",
+            "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/committee-photos/7.png",
           // details:
           //   "The Lok Sabha is the lower house of the Parliament of India, responsible for making laws and overseeing the executive.",
         },
@@ -51,7 +51,7 @@ const CommitteeCards = () => {
           // name: "International Press",
           redirect: " ",
           imageUrl:
-            "https://mun-website-images.s3.ap-south-1.amazonaws.com/tba.jpg",
+            "https://mun-website-images.s3.ap-south-1.amazonaws.com/2026/committee-photos/8.png",
           // details:
           //   "This committee focuses on the role of the press in promoting freedom of speech, democracy, and ethical journalism worldwide.",
         },
